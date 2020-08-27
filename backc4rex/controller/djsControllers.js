@@ -40,23 +40,34 @@ exports.getFavoritesDjs = async( req, res)=>{
             for (var i = 0; i < array.length; i++) {
                 if (array[i] === what) {
                     count++;
-                }
+                   
+                } //arr.push({Djs:what,N:count})
             }
-            return (count)
+            return ({name:what,rate:count})              
             
         }
-        let DjsResponse =  await guests
+        let DjsResponse = []
         let djsNumber =[]
-        guests.forEach(element =>{
-            djsNumber.push(element.favourite_dj)
-        })
+        let djsname =[]
+        let NewResponse =[]
         
-        DjsResponse.map(dj =>{
-            dj.numbersOfGuest = countInArray(djsNumber, dj.favourite_dj)
+        await guests.forEach(element =>{
+            if (!(element.favourite_dj in djsNumber)) {
+                djsNumber[element.favourite_dj] = true
+                djsname.push(element.favourite_dj)
+            }
+            DjsResponse.push(element.favourite_dj)
+        })
+        console.log(DjsResponse)
+        console.log(djsNumber)
+        console.log(djsname)
+        
+        await djsname.map(dj =>{
+            NewResponse.push(countInArray(DjsResponse, dj))
         })
 
-        //console.log(DjsResponse)
-        res.json(DjsResponse)
+       console.log(NewResponse)
+         res.json(NewResponse)
         
     } catch (error) {
         console.log(error);

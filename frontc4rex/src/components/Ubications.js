@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getUbicationsAction } from "../actions/djsActions";
@@ -8,25 +8,21 @@ const Ubications = () => {
 
   useEffect(() => {
     const getUbi = () => dispatch(getUbicationsAction());
-    getUbi();   
-
+    getUbi();
   }, []);
 
-  let Ubi =useSelector(state => state.djs.ubications)
+  let Ubi = useSelector((state) => state.djs.ubications);
 
-
-
-        let arrsort = Ubi
-        arrsort.sort( (a, b)=> {
-            var x = a['numberlocation']; var y = b['numberlocation'];
-            return ((x < y) ? 1 : ((x > y) ? -1 : 0));
-        });
-    
-
+  let arrsort = Ubi;
+  arrsort.sort((a, b) => {
+    var x = a["NumberPeople"];
+    var y = b["NumberPeople"];
+    return x < y ? 1 : x > y ? -1 : 0;
+  });
 
   return (
     <div className="container mt-5">
-        <h3>Ubications of Guests </h3>
+      <h3>Ubications of Guests </h3>
       <table className="table table-dark">
         <thead>
           <tr>
@@ -38,9 +34,9 @@ const Ubications = () => {
         <tbody>
           {Ubi.map((d, index) => (
             <tr key={index}>
-              <th scope="row">{index+1}</th>
-            <td>{d.location}</td>
-          <td>{d.numberlocation}</td>
+              <th scope="row">{index + 1}</th>
+              <td>{d.location}</td>
+              <td>{d.NumberPeople}</td>
             </tr>
           ))}
         </tbody>

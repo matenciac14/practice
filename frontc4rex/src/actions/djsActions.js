@@ -45,7 +45,7 @@ export function getFavoriteDjsAction(){
         console.log("llamandio")
         clientAxios.get('/favorite')
         .then(response =>{
-            //console.log(response.data)
+            console.log(response.data)
             dispatch(rungetlistFavok(response.data))
         })
         .catch(error =>{
