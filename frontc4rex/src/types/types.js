@@ -1,0 +1,11 @@
+export const GET_DJS = 'GET_DJS'
+export const GET_DJS_OK = 'GET_DJS_OK'
+export const GET_DJS_ERROR = 'GET_DJS_ERROR'
+
+export const GET_DJSFAV = 'GET_DJSFAV'
+export const GET_DJSFAV_OK = 'GET_DJSFAV_OK'
+export const GET_DJSFAV_ERROR = 'GET_DJSFAV_ERROR'
+
+export const GET_UBICATIONS = 'GET_UBICATIONS'
+export const GET_UBICATIONS_OK = 'GET_UBICATIONS_OK'
+export const GET_UBICATIONS_ERROR = 'GET_UBICATIONS_ERROR'
